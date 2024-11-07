@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MainActivity">
+
+
+
+    <!--  Fragment Navigation -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cns_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerImage">
+
+
+        <include
+            android:id="@+id/app_bar_home_page"
+            layout="@layout/app_bar_home_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/headerImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        android:src="@drawable/header_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/mrCodeImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mr_cod_icon"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+<!--    <eightbitlab.com.blurview.BlurView-->
+<!--        android:id="@+id/blurView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="30dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_margin="30dp"-->
+<!--            android:paddingVertical="60dp">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/fullNameEdt"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:background="@drawable/name_bg"-->
+<!--                android:drawablePadding="20dp"-->
+<!--                android:fontFamily="@font/roboto_thin"-->
+<!--                android:hint="Full Name"-->
+<!--                android:padding="25dp"-->
+<!--                android:textSize="@dimen/smallText4"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.501"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/EmailEdt"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:background="@drawable/name_bg"-->
+<!--                android:drawablePadding="20dp"-->
+<!--                android:fontFamily="@font/roboto_thin"-->
+<!--                android:hint="Email"-->
+<!--                android:padding="25dp"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+
+<!--                android:textSize="@dimen/smallText4"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/fullNameEdt" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/phoneNumEdt"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:background="@drawable/name_bg"-->
+<!--                android:drawablePadding="20dp"-->
+<!--                android:fontFamily="@font/roboto_thin"-->
+<!--                android:hint="Phone Number "-->
+<!--                android:padding="25dp"-->
+<!--                android:textSize="@dimen/smallText4"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/EmailEdt" />-->
+
+
+<!--            <Button-->
+<!--                android:id="@+id/button7"-->
+<!--                style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/blue_btn"-->
+<!--                android:fontFamily="@font/raleway"-->
+<!--                android:padding="25dp"-->
+<!--                android:text="Continue"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/smallText4"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/phoneNumEdt"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/phoneNumEdt"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/phoneNumEdt" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--    </eightbitlab.com.blurview.BlurView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/config_bg_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/unity_concept_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="40dp"
+        android:foreground="@drawable/circle_foreground"
+        android:padding="15dp"
+        android:src="@drawable/left_arrow"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    config layout-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/configContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="80dp"
+                android:fontFamily="@font/colby_st_bld"
+                android:text="Admin Config Panel"
+                android:textAlignment="center"
+                android:textColor="@color/blueShade1"
+                android:textSize="@dimen/subHeading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/kioskIdEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/name_bg"
+                android:drawableStart="@drawable/kid"
+                android:drawablePadding="20dp"
+                android:drawableTint="@color/blueShade1"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Kiosk ID"
+                android:padding="35dp"
+                android:textSize="@dimen/smallText4"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/emailEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/name_bg"
+                android:drawableStart="@drawable/uname"
+                android:drawablePadding="20dp"
+                android:drawableTint="@color/blueShade1"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Email"
+                android:padding="35dp"
+                android:textSize="@dimen/smallText4"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/kioskIdEdt" />
+
+            <EditText
+                android:id="@+id/passwordEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/name_bg"
+                android:drawableStart="@drawable/pass"
+                android:drawablePadding="20dp"
+                android:drawableTint="@color/blueShade1"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Password"
+                android:padding="35dp"
+                android:textSize="@dimen/smallText4"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/emailEdt" />
+
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blue_btn"
+                android:backgroundTint="@color/blueShade3"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/Heading2"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="@+id/passwordEdt"
+                app:layout_constraintStart_toStartOf="@+id/passwordEdt"
+                app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
+
+            <Button
+                android:id="@+id/syncBtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blue_btn"
+                android:backgroundTint="@color/blueShade3"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Sync"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/Heading2"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+                app:layout_constraintStart_toStartOf="@+id/saveBtn"
+                app:layout_constraintTop_toBottomOf="@id/saveBtn" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="80dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/syncBtn">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/kioskPrinterCard"
+                    android:layout_width="330dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center"
+                        android:padding="80dp"
+                        android:text="Kiosk Printer"
+                        android:textAlignment="center"
+                        android:textColor="@color/blueShade1"
+                        android:textSize="@dimen/smallText4" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/kitchenPrinterCard"
+                    android:layout_width="330dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="465dp"
+                        android:layout_height="281dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center"
+                        android:padding="80dp"
+                        android:text="Kitchen Printer"
+                        android:textAlignment="center"
+                        android:textColor="@color/blueShade1"
+                        android:textSize="@dimen/smallText4" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="80dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/paymentTerminalCard"
+                    android:layout_width="330dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center"
+                        android:padding="80dp"
+                        android:text="Payment Terminal"
+                        android:textAlignment="center"
+                        android:textColor="@color/blueShade1"
+                        android:textSize="@dimen/smallText4" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/taxRreceiptPrintCard"
+                    android:layout_width="330dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/raleway"
+                        android:gravity="center"
+                        android:padding="80dp"
+                        android:text="Print Tax Receipt"
+                        android:textAlignment="center"
+                        android:textColor="@color/blueShade1"
+                        android:textSize="@dimen/smallText4" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/backToHomeBtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/blue_btn"
+                android:backgroundTint="@color/blueShade3"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Back to home"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallText4"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                app:layout_constraintWidth_percent="0.65" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <!--printer ip layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/printerIpContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+        <EditText
+            android:id="@+id/PrinterIpEdt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/name_bg"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Printer IP"
+            android:padding="25dp"
+            android:textSize="@dimen/smallText4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/testPrinterBtn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/blue_btn"
+            android:backgroundTint="@color/blueShade3"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Test Printer"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallText4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/PrinterIpEdt"
+            app:layout_constraintStart_toStartOf="@+id/PrinterIpEdt"
+            app:layout_constraintTop_toBottomOf="@id/PrinterIpEdt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

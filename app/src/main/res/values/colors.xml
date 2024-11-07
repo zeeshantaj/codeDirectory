@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blueShade1">#002363</color>
+    <color name="blueShade2">#005AE6</color>
+    <color name="blueShade3">#0314BB</color>
+    <color name="textCol">#404B52</color>
+    <color name="circle_red">#FF3131</color>
+    <color name="item_card_color">#EFF4FC</color>
+    <color name="product_card_color">#F5F5F5</color>
+    <color name="gradientStart">#012362</color>
+    <color name="gradientEnd">#0250cd</color>
+
+
+</resources>

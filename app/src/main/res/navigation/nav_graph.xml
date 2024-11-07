@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.StartOrderFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/start_order" />
+
+    <fragment
+        android:id="@+id/orderProcessFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.OrderProcessFragment"
+        android:label="Order Process Fragment"
+        tools:layout="@layout/order_process_layout" />
+    <fragment
+        android:id="@+id/paymentProcessFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.PaymentProcess"
+        android:label="payment Process Fragment"
+        tools:layout="@layout/payment_process_layout" />
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.MenuFragment"
+        android:label="Menu Fragment"
+        tools:layout="@layout/fragment_menu_browsing" />
+
+    <fragment
+        android:id="@+id/modifierFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.ModifierFragment"
+        android:label="modifier Fragment"
+        tools:layout="@layout/fragment_modifiers" />
+
+
+  <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.CheckoutFragment"
+        android:label="checkout Fragment"
+        tools:layout="@layout/checkout_layout" />
+
+  <fragment
+        android:id="@+id/savedOrderFragment"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.SaveOrderFragment"
+        android:label="savedOrder Fragment"
+        tools:layout="@layout/fragment_saved_orders" />
+
+
+
+</navigation>

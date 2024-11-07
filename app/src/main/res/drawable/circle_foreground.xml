@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State when button is pressed -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/textCol"/> <!-- Change the background color when clicked -->
+            <solid android:color="#B8B8B8"/>
+            <corners android:radius="100dp"/>
+        </shape>
+    </item>
+
+    <!-- Default state -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent"/> <!-- Default color (transparent) -->
+        </shape>
+    </item>
+</selector>

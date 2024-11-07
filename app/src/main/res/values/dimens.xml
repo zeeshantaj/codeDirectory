@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="mainHeading">100dp</dimen>
+    <dimen name="subHeading">80dp</dimen>
+    <dimen name="Heading">50dp</dimen>
+    <dimen name="Heading1">60dp</dimen>
+    <dimen name="Heading3">70dp</dimen>
+    <dimen name="Heading2">40dp</dimen>
+    <dimen name="normalText">45dp</dimen>
+    <dimen name="smallText">20dp</dimen>
+    <dimen name="smallText2">25dp</dimen>
+    <dimen name="smallText3">30dp</dimen>
+    <dimen name="smallText4">36dp</dimen>
+    <dimen name="btn_padding">30dp</dimen>
+</resources>

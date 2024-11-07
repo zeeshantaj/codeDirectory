@@ -1,0 +1,86 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.linkitsoft.mrcodekiosk'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.linkitsoft.mrcodekiosk"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.activity
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+
+//    *****************Volley and GSON***********************
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+//    *****************Volley and GSON***********************
+
+//    ****************Sweet Alert Dialog**********************
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+//    ****************Sweet Alert Dialog**********************
+
+
+//    *********************Picasso*****************************
+    implementation 'com.squareup.picasso:picasso:2.71828'
+//    *********************Picasso*****************************
+
+    //socket
+    implementation('io.socket:socket.io-client:2.1.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+//    glide :
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+
+    //    toasty
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    // blur view
+    implementation 'com.github.Dimezis:BlurView:version-2.0.5'
+
+    // country code
+    implementation 'com.hbb20:ccp:2.6.0'
+
+    // otp view
+    implementation 'com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0'
+
+    // navigation
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+    //circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+}
