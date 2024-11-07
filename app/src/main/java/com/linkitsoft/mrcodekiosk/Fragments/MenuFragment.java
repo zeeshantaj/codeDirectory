@@ -92,7 +92,7 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
         categoryModelList.add(new CategoryModel(R.drawable.menuiteme, "Burger Deal9",false,9));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemf, "Fish10",false,10));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemd, "Just Chicken11",false,11));
-        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView,categoryLayoutManager, this::OnCatClicked);
+        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView,categoryLayoutManager, this::OnCatClicked,true);
         categoryLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
         categoryRecyclerView.setAdapter(categoryAdapter);

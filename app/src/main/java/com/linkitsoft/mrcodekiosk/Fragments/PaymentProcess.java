@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.linkitsoft.mrcodekiosk.Activities.MainActivity;
@@ -22,6 +23,7 @@ public class PaymentProcess extends BaseFragment {
 
     private ImageView tapCard;
     private Button saveOrderForLatterBtn;
+    private ConstraintLayout paymentSuccessLayout,tapCartLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,8 +31,13 @@ public class PaymentProcess extends BaseFragment {
         View view = inflater.inflate(R.layout.payment_process_layout, container, false);
         tapCard = view.findViewById(R.id.imageView5);
         saveOrderForLatterBtn = view.findViewById(R.id.saveOrderForLatterBtn);
+        tapCartLayout = view.findViewById(R.id.tapCardLayout);
+        paymentSuccessLayout = view.findViewById(R.id.paymentSuccessLayout);
         tapCard.setOnClickListener(view1 -> {
-            startActivity(new Intent(getContext(), MainActivity.class));
+//            startActivity(new Intent(getContext(), MainActivity.class));
+            fadeIn(paymentSuccessLayout);
+            fadeOut(tapCartLayout);
+//
         });
 
         clickedListener();
@@ -40,5 +47,20 @@ public class PaymentProcess extends BaseFragment {
         saveOrderForLatterBtn.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), MainActivity.class));
         });
+    }
+    private void fadeIn(View view) {
+        view.setVisibility(View.VISIBLE);
+        view.setAlpha(0f);
+        view.animate()
+                .alpha(1f)
+                .setDuration(300)
+                .setListener(null);
+    }
+
+    private void fadeOut(View view) {
+        view.animate()
+                .alpha(0f)
+                .setDuration(300)
+                .withEndAction(() -> view.setVisibility(View.GONE));
     }
 }

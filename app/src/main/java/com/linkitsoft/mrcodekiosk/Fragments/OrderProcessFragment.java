@@ -64,13 +64,13 @@ public class OrderProcessFragment extends BaseFragment {
 //            navController.navigate(R.id.menuFragment);
         });
         guestBtn.setOnClickListener(view -> {
-            navController.navigate(R.id.menuFragment);
+            navController.navigate(R.id.selectCategory);
         });
         signInContinueBtn.setOnClickListener(view -> {
-            navController.navigate(R.id.menuFragment);
+            navController.navigate(R.id.selectCategory);
         });
         signUpContinueBtn.setOnClickListener(view -> {
-            navController.navigate(R.id.menuFragment);
+            navController.navigate(R.id.selectCategory);
         });
         signUpBtn.setOnClickListener(view -> {
             fadeIn(signUpLayoutContainer);

@@ -79,7 +79,8 @@ public class MainActivity extends BaseActivity{
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
                 Log.d("MyApp",navDestination.getLabel().toString());
                 String label = navDestination.getLabel().toString();
-                if (label.equals("Menu Fragment") || label.equals("modifier Fragment") || label.equals("checkout Fragment") || label.equals("savedOrder Fragment")){
+                if (label.equals("Menu Fragment") || label.equals("modifier Fragment") || label.equals("checkout Fragment")
+                        || label.equals("savedOrder Fragment") || label.equals("select cat Fragment")){
 //                    animateImage(headerImage);
                     headerImage.setVisibility(View.VISIBLE);
                 }else {

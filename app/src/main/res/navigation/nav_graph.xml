@@ -48,5 +48,12 @@
         tools:layout="@layout/fragment_saved_orders" />
 
 
+  <fragment
+        android:id="@+id/selectCategory"
+        android:name="com.linkitsoft.mrcodekiosk.Fragments.SelectCategoryFragment"
+        android:label="select cat Fragment"
+        tools:layout="@layout/fragment_select_catergory" />
+
+
 
 </navigation>

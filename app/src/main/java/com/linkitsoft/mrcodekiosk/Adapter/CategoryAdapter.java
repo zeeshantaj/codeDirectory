@@ -1,5 +1,7 @@
 package com.linkitsoft.mrcodekiosk.Adapter;
 
+import static com.linkitsoft.mrcodekiosk.Activities.MainActivity.navController;
+
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.PointF;
@@ -41,6 +43,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
 
     private OnItemClicked onItemClicked;
     private int loopFactor = 3; // duplicate list 3 times for smooth infinite scrolling
+
+    private boolean IsSelectedCatFragment = true;
+
     public void setOnItemClick(OnItemClicked onItemClicked){
         this.onItemClicked = onItemClicked;
     }
@@ -57,14 +62,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
         Log.d("MyApp","new item size "+newItems.size());
     }
 
-    public CategoryAdapter(Context context, List<CategoryModel> categoryModelList,RecyclerView recyclerView,LinearLayoutManager linearLayoutManager,OnCategoryItemClicked onCategoryItemClicked) {
+    public CategoryAdapter(Context context, List<CategoryModel> categoryModelList,RecyclerView recyclerView,LinearLayoutManager linearLayoutManager,OnCategoryItemClicked onCategoryItemClicked,boolean IsSelectedCatFragment) {
         this.context = context;
         this.categoryModelList = categoryModelList;
         this.recyclerView = recyclerView;
         this.onCategoryItemClicked = onCategoryItemClicked;
         this.linearLayoutManager = linearLayoutManager;
-        for (int i = 0; i < loopFactor; i++) {
-            this.categoryModelList.addAll(categoryModelList);
+        this.IsSelectedCatFragment = IsSelectedCatFragment;
+        if (IsSelectedCatFragment){
+            for (int i = 0; i < loopFactor; i++) {
+                this.categoryModelList.addAll(categoryModelList);
+            }
         }
 
 
@@ -129,40 +137,46 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
 //            holder.itemView.setScaleY(1.0f);
 //        }
 
-        onCategoryItemClicked.OnCatClicked(2);
-        if (model.isIS_Selected()){
-
+        if (IsSelectedCatFragment){
             onCategoryItemClicked.OnCatClicked(2);
+            if (model.isIS_Selected()){
+
+                onCategoryItemClicked.OnCatClicked(2);
 //            scrollToPosition(recyclerView,position);
-            holder.itemCardView.setBackgroundResource(R.drawable.category_item_selected);
-            ObjectAnimator scaleX = ObjectAnimator.ofFloat(holder.itemView, "scaleX", 1.0f, 1.2f);
-            ObjectAnimator scaleY = ObjectAnimator.ofFloat(holder.itemView, "scaleY", 1.0f, 1.2f);
+                holder.itemCardView.setBackgroundResource(R.drawable.category_item_selected);
+                ObjectAnimator scaleX = ObjectAnimator.ofFloat(holder.itemView, "scaleX", 1.0f, 1.2f);
+                ObjectAnimator scaleY = ObjectAnimator.ofFloat(holder.itemView, "scaleY", 1.0f, 1.2f);
 
-            scaleX.setInterpolator(new BounceInterpolator());
-            scaleY.setInterpolator(new BounceInterpolator());
+                scaleX.setInterpolator(new BounceInterpolator());
+                scaleY.setInterpolator(new BounceInterpolator());
 
-            scaleX.setDuration(500);
-            scaleY.setDuration(500);
-            scaleX.start();
-            scaleY.start();
+                scaleX.setDuration(500);
+                scaleY.setDuration(500);
+                scaleX.start();
+                scaleY.start();
 
-        }else {
-            holder.itemCardView.setBackgroundResource(R.drawable.category_card_default);
-            holder.itemView.setScaleX(1.0f);  // Normal size
-            holder.itemView.setScaleY(1.0f);
-        }
+            }else {
+                holder.itemCardView.setBackgroundResource(R.drawable.category_card_default);
+                holder.itemView.setScaleX(1.0f);  // Normal size
+                holder.itemView.setScaleY(1.0f);
+            }
 
-        holder.itemCardView.setOnClickListener(v -> {
+            holder.itemCardView.setOnClickListener(v -> {
 //            animateJump(holder.itemView);
 //            int oldPosition = selectedPosition;
 //            selectedPosition = holder.getAdapterPosition();
 //            notifyItemChanged(oldPosition);
 //            notifyItemChanged(selectedPosition);
 
-            onCategoryItemClicked.OnCatClicked(2);
-            onItemClicked.onItemClicked(model.getItemId(),categoryModelList);
-            setBackground(position,categoryModelList);
-        });
+                onCategoryItemClicked.OnCatClicked(2);
+                onItemClicked.onItemClicked(model.getItemId(),categoryModelList);
+                setBackground(position,categoryModelList);
+            });
+        }else {
+            holder.itemCardView.setOnClickListener(view -> {
+                navController.navigate(R.id.menuFragment);
+            });
+        }
 
         holder.catName.setText(model.getCatName());
         Glide.with(context)
