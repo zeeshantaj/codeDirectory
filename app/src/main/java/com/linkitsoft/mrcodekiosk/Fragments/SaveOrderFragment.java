@@ -24,7 +24,7 @@ import com.linkitsoft.mrcodekiosk.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaveOrderFragment extends Fragment {
+public class SaveOrderFragment extends BaseFragment {
     public SaveOrderFragment() {
     }
 

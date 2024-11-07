@@ -24,7 +24,7 @@ import com.linkitsoft.mrcodekiosk.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifierFragment extends Fragment {
+public class ModifierFragment extends BaseFragment {
     public ModifierFragment() {
     }
 
@@ -58,10 +58,12 @@ public class ModifierFragment extends Fragment {
     }
     private void clickListener(){
         addToCartBtn.setOnClickListener(view -> {
-            navController.navigate(R.id.checkoutFragment);
+            navController.popBackStack();
+//            navController.navigate(R.id.checkoutFragment);
         });
         checkOutBtn.setOnClickListener(view -> {
             navController.navigate(R.id.checkoutFragment);
+//            navController.popBackStack();
         });
         leftArrowBtn.setOnClickListener(view -> {
             navController.popBackStack();

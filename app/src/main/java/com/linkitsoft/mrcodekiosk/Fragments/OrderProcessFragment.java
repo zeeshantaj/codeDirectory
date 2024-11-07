@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.hbb20.CountryCodePicker;
 import com.linkitsoft.mrcodekiosk.R;
 
-public class OrderProcessFragment extends Fragment {
+public class OrderProcessFragment extends BaseFragment {
     public OrderProcessFragment() {
     }
     private CardView takeawayBtn,dineInBtn,signUpBtn,guestBtn;

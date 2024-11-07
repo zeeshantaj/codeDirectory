@@ -31,7 +31,7 @@ import java.util.List;
 import eightbitlab.com.blurview.BlurView;
 import eightbitlab.com.blurview.RenderScriptBlur;
 
-public class CheckoutFragment extends Fragment {
+public class CheckoutFragment extends BaseFragment {
 
     public CheckoutFragment() {
     }

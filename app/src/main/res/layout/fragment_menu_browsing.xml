@@ -41,6 +41,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:src="@drawable/cart_icon"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

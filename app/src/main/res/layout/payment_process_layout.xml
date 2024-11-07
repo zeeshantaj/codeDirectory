@@ -9,7 +9,7 @@
 <!--    tap card layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tapCardLayout"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -85,7 +85,7 @@
         android:id="@+id/paymentSuccessLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/textView6"
@@ -128,6 +128,9 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/smallText4"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
