@@ -1,5 +1,7 @@
 package com.linkitsoft.mrcodekiosk.Fragments;
 
+import static com.linkitsoft.mrcodekiosk.Activities.MainActivity.navController;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +27,6 @@ public class SelectCategoryFragment extends Fragment {
     private List<CategoryModel> categoryModelList = new ArrayList<>();
     private RecyclerView categoryRecyclerView;
     private CategoryAdapter categoryAdapter;
-    private LinearLayoutManager categoryLayoutManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,10 +45,12 @@ public class SelectCategoryFragment extends Fragment {
         categoryModelList.add(new CategoryModel(R.drawable.menuiteme, "Burger Deal9",false,9));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemf, "Fish10",false,10));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemd, "Just Chicken11",false,11));
-        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView, categoryLayoutManager, new OnCategoryItemClicked() {
+        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView,  new OnCategoryItemClicked() {
             @Override
             public void OnCatClicked(int id) {
-
+                Bundle args = new Bundle();
+                args.putInt("catId",id);
+                navController.navigate(R.id.menuFragment,args);
             }
         },false);
 

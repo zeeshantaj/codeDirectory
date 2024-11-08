@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.linkitsoft.mrcodekiosk.Activities.BaseActivity;
@@ -42,7 +43,6 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
     private List<CategoryModel> categoryModelList = new ArrayList<>();
     private List<CategoryModel> productModelList = new ArrayList<>();
     private List<ProductCatModel> productCatModelsList = new ArrayList<>();
-    private List<ProductCatModel> endlessList = new ArrayList<>();
     private RecyclerView categoryRecyclerView, productCatRecycler;
     private Button viewHistoryBtn;
     private ImageView leftArrowBtn,rightArrowBtn;
@@ -51,12 +51,10 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
     private int previousTotal = 0;
     private boolean loading = true;
     private int visibleThreshold = 5;
-    int firstVisibleItem, visibleItemCount, totalItemCount;
-    int selectedPos,lastVisibleItem;
     private int previousSelectedPosition = -1;
-    private static final int ITEM_COUNT = 20; // Initial number of items
+    private static final int ITEM_COUNT = 21; // Initial number of items
     private ImageView cartBtn;
-
+    private int selectedCat;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +72,8 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
         setCategory();
 //        setCatProduct();
         clickedListener();
-
+        Bundle args = getArguments();
+        selectedCat = args.getInt("catId", 0);
 
         return view;
     }
@@ -92,77 +91,74 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
         categoryModelList.add(new CategoryModel(R.drawable.menuiteme, "Burger Deal9",false,9));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemf, "Fish10",false,10));
         categoryModelList.add(new CategoryModel(R.drawable.menuitemd, "Just Chicken11",false,11));
-        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView,categoryLayoutManager, this::OnCatClicked,true);
+        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList, categoryRecyclerView, this::OnCatClicked,true);
         categoryLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
         categoryRecyclerView.setAdapter(categoryAdapter);
-
-
         categoryAdapter.setOnItemClick(new OnItemClicked() {
             @Override
             public void onItemClicked(int pos, List<CategoryModel> modelList) {
 
-                Log.d("MyApp","clicked pos "+pos);
-                if (pos != previousSelectedPosition) {
-                    // Set the new center position as selected
-                    categoryModelList.get(pos).setIS_Selected(true);
-
-                    // Update only the previously selected and current selected items
-                    if (previousSelectedPosition != -1) {
-                        categoryModelList.get(previousSelectedPosition).setIS_Selected(false);
-                        categoryAdapter.notifyItemChanged(previousSelectedPosition);
-                    }
-                    categoryAdapter.notifyItemChanged(pos);
-
-                    // Update the previous selected position
-                    previousSelectedPosition = pos;
-                }
-
             }
         });
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(categoryRecyclerView);
+
         categoryRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
-                int firstVisibleItem = categoryLayoutManager.findFirstVisibleItemPosition();
-                int lastVisibleItem = categoryLayoutManager.findLastVisibleItemPosition();
-                int centerPosition = (firstVisibleItem + lastVisibleItem) / 2;
-
-                // Avoid unnecessary refreshes
-                if (centerPosition != previousSelectedPosition) {
-                    // Set the new center position as selected
-                    categoryModelList.get(centerPosition).setIS_Selected(true);
-
-                    // Update only the previously selected and current selected items
-                    if (previousSelectedPosition != -1) {
-                        categoryModelList.get(previousSelectedPosition).setIS_Selected(false);
-                        categoryAdapter.notifyItemChanged(previousSelectedPosition);
-                    }
-                    categoryAdapter.notifyItemChanged(centerPosition);
-
-                    // Update the previous selected position
-                    previousSelectedPosition = centerPosition;
-                }
-
+                setStateClear(categoryModelList);
                 if (!recyclerView.canScrollHorizontally(1)) {
-                    // Append new items to create the circular effect
+                    // Append new items to create the circular effect at the end
                     categoryAdapter.appendItems(getInitialItems());
                 }
                 if (!recyclerView.canScrollHorizontally(-1)) {
-                    // Prepend new items to create circular effect to the left
+
                     categoryAdapter.prependItems(getInitialItems());
+                }
+
+
+            }
+
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    // When scrolling stops, find the center item
+                    View centerView = snapHelper.findSnapView(categoryLayoutManager);
+                    if (centerView != null) {
+                        int centerPosition = categoryRecyclerView.getChildAdapterPosition(centerView);
+                        if (centerPosition != previousSelectedPosition) {
+                            updateSelectedItem(centerPosition);
+                            categoryAdapter.onItemScrolled(centerPosition);
+                            Log.d("MyApp","home fragment center pos "+centerPosition);
+                        }
+                    }
                 }
             }
         });
+
     }
 
-    private List<CategoryModel> getInitialItems() {
-        List<CategoryModel> initialItems = new ArrayList<>();
-        for (int i = 1; i <= ITEM_COUNT; i++) {
-            initialItems.add(categoryModelList.get(i));
+    private void setStateClear( List<CategoryModel> bottomNavModelList) {
+        for(int i = 0;i < bottomNavModelList.size() ; i++){
+                bottomNavModelList.get(i).setIS_Selected(false);
         }
-        return initialItems;
+    }
+    // Helper method to update selected item and only redraw necessary items
+    private void updateSelectedItem(int newPosition) {
+        if (previousSelectedPosition != -1) {
+            categoryModelList.get(previousSelectedPosition).setIS_Selected(false);
+            categoryAdapter.notifyItemChanged(previousSelectedPosition);
+        }
+        categoryModelList.get(newPosition).setIS_Selected(true);
+        categoryAdapter.notifyItemChanged(newPosition);
+        previousSelectedPosition = newPosition;
+    }
+    // Smooth scroll method
+    private void scrollToPositionSmoothly(RecyclerView recyclerView, int position) {
+        recyclerView.post(() -> recyclerView.smoothScrollToPosition(position));
     }
 
     private void clickedListener(){
@@ -180,6 +176,16 @@ public class MenuFragment extends BaseFragment implements OnCategoryItemClicked 
         });
     }
 
+    private List<CategoryModel> getInitialItems() {
+        List<CategoryModel> initialItems = new ArrayList<>();
+//        ITEM_COUNT = categoryModelList.size();
+//        int total = ITEM_COUNT * 2;
+        Log.d("MyApp","ITEM COUNT "+categoryModelList.size());
+        for (int i = 1; i <= ITEM_COUNT; i++) {
+            initialItems.add(categoryModelList.get(i));
+        }
+        return initialItems;
+    }
     private void setCatProduct(){
         productModelList.clear();
         productCatModelsList.clear();
